@@ -1,0 +1,439 @@
+:root {
+    --bg-color: #050505;
+    --accent-red: #d80a14b7;
+    --highlight-yellow: #FFEA00;
+    --text-primary: #f5f5f5;
+    --text-dim: #888888;
+
+    --font-heading: 'Syne', sans-serif;
+    --font-body: 'Manrope', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    overscroll-behavior-y: none;
+    /* Prevent bounce effects on some browsers */
+}
+
+/* This element defines the actual scroll height */
+#scroll-proxy {
+    width: 100%;
+    height: 480vh;
+    /* Increased to accommodate the footer */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+/* Fixed container holding all parallax elements */
+#parallax-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 2;
+    overflow: hidden;
+    pointer-events: none;
+    /* Let scroll events pass through to body/scroll-proxy */
+}
+
+/* All layers start sharing the screen space */
+.parallax-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    will-change: transform;
+}
+
+/* Specifically for textual and content elements */
+.content-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    will-change: transform;
+    pointer-events: auto;
+}
+
+/* Hero typography */
+.hero-text-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+    z-index: 3;
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(5rem, 16vw, 18rem);
+    font-weight: 800;
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+    color: var(--text-primary);
+    opacity: 0.95;
+    text-transform: uppercase;
+    mix-blend-mode: exclusion;
+    white-space: nowrap;
+}
+
+/* Focus Subject */
+.hero-cup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+    width: clamp(300px, 45vw, 850px);
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 40px 80px rgba(0, 0, 0, 0.9));
+    z-index: 4;
+}
+
+/* Background Atmosphere */
+.bg-steam {
+    position: absolute;
+    width: 140vw;
+    height: auto;
+    opacity: 0.35;
+    pointer-events: none;
+    filter: blur(14px) brightness(0.7) sepia(0.6) hue-rotate(330deg) saturate(1.8);
+    object-fit: contain;
+}
+
+.bg-steam.top-left {
+    top: -20%;
+    left: -30%;
+}
+
+.bg-steam.bottom-right {
+    bottom: -40%;
+    right: -30%;
+    transform: scaleX(-1);
+}
+
+/* Floating Elements */
+.floating-beans {
+    position: absolute;
+    height: auto;
+    object-fit: contain;
+    opacity: 0.85;
+}
+
+.floating-beans.blurred {
+    filter: blur(16px) brightness(0.6);
+    top: 15%;
+    left: 0%;
+    width: 90vw;
+    max-width: 800px;
+    transform: rotate(15deg);
+}
+
+.floating-beans.sharp {
+    filter: blur(2px) drop-shadow(0 25px 40px rgba(0, 0, 0, 0.9));
+    top: 70%;
+    right: -5%;
+    width: 60vw;
+    max-width: 500px;
+    transform: rotate(-25deg);
+}
+
+.floating-beans.sharp-large {
+    filter: blur(5px) drop-shadow(0 35px 50px rgba(0, 0, 0, 0.95));
+    top: 120vh;
+    /* Re-spaced */
+    left: -10%;
+    width: 80vw;
+    max-width: 700px;
+    transform: rotate(45deg);
+}
+
+/* Sliced Cake */
+.floating-cake {
+    position: absolute;
+    top: 100vh;
+    /* Condensed position */
+    left: 15%;
+    width: clamp(250px, 35vw, 600px);
+    height: auto;
+    object-fit: contain;
+    filter: blur(1px) drop-shadow(0 35px 70px rgba(210, 4, 45, 0.15));
+    z-index: 5;
+    transform: rotate(-12deg);
+}
+
+/* Floating Pizza and Burger */
+.floating-pizza {
+    position: absolute;
+    top: 180vh;
+    /* Condensed position */
+    right: 5%;
+    width: clamp(300px, 45vw, 750px);
+    height: auto;
+    object-fit: contain;
+    z-index: 4;
+    filter: drop-shadow(0 40px 80px rgba(0, 0, 0, 0.9));
+    animation: slowFloat 6s ease-in-out infinite alternate;
+}
+
+.floating-burger {
+    position: absolute;
+    top: 280vh;
+    /* Condensed position */
+    left: 5%;
+    width: clamp(300px, 40vw, 750px);
+    height: auto;
+    object-fit: contain;
+    z-index: 4;
+    filter: drop-shadow(0 40px 80px rgba(0, 0, 0, 0.9));
+    animation: slowFloat 7s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes slowFloat {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(-30px) rotate(3deg);
+    }
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 5vh;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    z-index: 20;
+    opacity: 0.8;
+}
+
+.scroll-indicator::before {
+    content: 'CRAVING MORE';
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    letter-spacing: 0.35em;
+    color: var(--highlight-yellow);
+    font-weight: 300;
+}
+
+.scroll-indicator .line {
+    width: 1px;
+    height: 90px;
+    background: linear-gradient(to bottom, var(--highlight-yellow), transparent);
+    animation: scrollLine 2.5s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+    transform-origin: top;
+}
+
+@keyframes scrollLine {
+    0% {
+        transform: scaleY(0);
+        transform-origin: top;
+        opacity: 1;
+    }
+
+    40% {
+        transform: scaleY(1);
+        transform-origin: top;
+        opacity: 1;
+    }
+
+    40.1% {
+        transform: scaleY(1);
+        transform-origin: bottom;
+        opacity: 1;
+    }
+
+    100% {
+        transform: scaleY(0);
+        transform-origin: bottom;
+        opacity: 0;
+    }
+}
+
+/* Content Sections */
+.spacer {
+    height: 50vh;
+    /* Reduced distance between text blocks */
+}
+
+.spacer-small {
+    height: 30vh;
+    /* Reduced extra space */
+}
+
+.content-section {
+    padding: 0 8vw;
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+}
+
+.content-section.right-align {
+    align-items: flex-end;
+    text-align: right;
+}
+
+.content-section.center-align {
+    align-items: center;
+    text-align: center;
+}
+
+.section-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(3.5rem, 8vw, 9rem);
+    font-weight: 800;
+    line-height: 0.85;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+    position: relative;
+    z-index: 2;
+}
+
+.highlight-text {
+    color: var(--accent-red);
+}
+
+.section-body {
+    max-width: 450px;
+    position: relative;
+    z-index: 2;
+}
+
+.section-body p {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--text-dim);
+    margin-bottom: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+}
+
+.accent-line {
+    width: 50px;
+    height: 1px;
+    background-color: var(--highlight-yellow);
+    margin-top: 2rem;
+    transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-on-scroll.is-visible .accent-line {
+    width: 150px;
+}
+
+.accent-line.right {
+    margin-left: auto;
+}
+
+/* Reveal Animation Setup */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(120px);
+    transition: opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Footer Section */
+.site-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2vh 8vw;
+    background-color: transparent;
+    position: relative;
+    z-index: 20;
+    margin-top: 0;
+}
+
+.footer-left {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.footer-noodles {
+    width: clamp(180px, 30vw, 450px);
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.9));
+    animation: slowFloat 7s ease-in-out infinite alternate;
+}
+
+.footer-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.footer-text {
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 7vw, 7rem);
+    font-weight: 800;
+    line-height: 0.9;
+    color: var(--text-primary);
+    text-align: right;
+    letter-spacing: -0.03em;
+}
+
+@media (max-width: 768px) {
+    .site-footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 3vh;
+        padding: 4vh 5vw;
+    }
+
+    .footer-right {
+        justify-content: center;
+    }
+
+    .footer-text {
+        text-align: center;
+    }
+
+    .bg-steam.top-left {
+        left: -80%;
+    }
+
+    .spacer {
+        height: 100vh;
+    }
+
+    .floating-cake {
+        left: -10%;
+        width: 80vw;
+    }
+}

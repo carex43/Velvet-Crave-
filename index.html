@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velvet Crave</title>
+    <meta name="description" content="Experience the antigravity minimalist aesthetic of Velvet Crave, a luxury cafe.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="scroll-proxy"></div>
+    
+    <div id="parallax-container">
+        <!-- Background Layer: Steam & Ambient textures -->
+        <div class="parallax-layer layer-bg" data-speed="0.15">
+            <img src="assets/red_steam_clouds.png" alt="" class="bg-steam top-left">
+            <img src="assets/red_steam_clouds.png" alt="" class="bg-steam bottom-right">
+            <img src="assets/red_steam_clouds.png" alt="" class="bg-steam top-left" style="top: 150vh;">
+            <img src="assets/red_steam_clouds.png" alt="" class="bg-steam bottom-right" style="top: 250vh;">
+        </div>
+        
+        <!-- Mid-Background Layer: Floating beans (blurred) -->
+        <div class="parallax-layer layer-mid-bg" data-speed="0.3">
+            <img src="assets/floating_coffee_beans.png" alt="" class="floating-beans blurred b1">
+            <img src="assets/floating_coffee_beans.png" alt="" class="floating-beans blurred" style="top: 150vh; right: -10vw; transform: scale(1.3) rotate(45deg);">
+            <img src="assets/floating_coffee_beans.png" alt="" class="floating-beans blurred" style="top: 250vh; left: -10vw; transform: scale(0.9) rotate(-30deg);">
+            <img src="assets/floating_coffee_beans.png" alt="" class="floating-beans blurred" style="top: 350vh; right: 10vw; transform: scale(1.1) rotate(90deg);">
+            <img src="assets/floating_red_velvet_cake.png" alt="" class="floating-cake" style="top: 200vh; right: 40vw; width: 400px; filter: blur(25px) brightness(0.4); z-index: -1;">
+        </div>
+        
+        <!-- Typography Layer -->
+        <div class="parallax-layer layer-text" data-speed="0.5">
+            <div class="hero-text-container">
+                <h1 class="hero-title">VELVET<br>CRAVE</h1>
+            </div>
+            
+            <div class="scroll-indicator">
+                <div class="line"></div>
+            </div>
+        </div>
+        
+        <!-- Foreground Layer: Main subject (Coffee Cup) -->
+        <div class="parallax-layer layer-hero" data-speed="0.8">
+            <img src="assets/velvet_coffee_cup.png" alt="Velvet Crave Coffee Cup" class="hero-cup">
+            <img src="assets/floating_pizza.png" alt="Floating Pizza" class="floating-pizza">
+            <img src="assets/floating_burger.png" alt="Tall Burger" class="floating-burger">
+        </div>
+        
+        <!-- Extreme Foreground: Cake and sharp beans (Fast moving) -->
+        <div class="parallax-layer layer-fg" data-speed="1.4">
+            <img src="assets/floating_red_velvet_cake.png" alt="Red Velvet Cake" class="floating-cake">
+            <img src="assets/floating_coffee_beans.png" alt="" class="floating-beans sharp b2">
+            
+            <!-- Additional foreground debris spanning the page -->
+            <img src="assets/floating_coffee_beans.png" alt="" class="floating-beans sharp-large b3">
+            <img src="assets/floating_coffee_beans.png" alt="" class="floating-beans sharp" style="top: 180vh; left: 10vw; transform: scale(0.8) rotate(15deg);">
+            <img src="assets/floating_coffee_beans.png" alt="" class="floating-beans sharp" style="top: 280vh; right: 15vw; transform: scale(1.2) rotate(-80deg);">
+            <img src="assets/floating_coffee_beans.png" alt="" class="floating-beans sharp" style="top: 380vh; left: 25vw; transform: scale(0.9) rotate(45deg);">
+        </div>
+        
+        <!-- Content Sections -->
+        <div class="content-wrapper">
+            <section class="spacer"></section>
+            
+            <section class="content-section reveal-on-scroll">
+                <h2 class="section-heading">CRAVING<br><span class="highlight-text">THE VOID</span></h2>
+                <div class="section-body">
+                    <p>In the silence of the black canvas, flavor speaks loudest. A symphony of stark contrasts and rich depth.</p>
+                    <p>Every pour an act of defiance against the mundane. An escape from gravity.</p>
+                    <div class="accent-line"></div>
+                </div>
+            </section>
+            
+            <section class="spacer"></section>
+            
+            <section class="content-section right-align reveal-on-scroll">
+                <h2 class="section-heading">LIQUID<br><span class="highlight-text">VELVET</span></h2>
+                <div class="section-body">
+                    <p>Not just coffee. A visceral experience carved out of the ether.</p>
+                    <p>The dark roast meets the crimson rush, floating effortlessly above expectation.</p>
+                    <div class="accent-line right"></div>
+                </div>
+            </section>
+            
+            <section class="spacer"></section>
+            
+            <section class="content-section center-align reveal-on-scroll">
+                <h2 class="section-heading">AWAKEN</h2>
+                <div class="section-body">
+                    <p>Let go of the weight. Surrender to the crave.</p>
+                </div>
+            </section>
+            
+            <section class="spacer"></section>
+            
+            <section class="content-section reveal-on-scroll">
+                <h2 class="section-heading">ENDLESS<br><span class="highlight-text">CRUST</span></h2>
+                <div class="section-body">
+                    <p>Melted strings of chaos defying logic.</p>
+                    <p>Not just a slice, it's an ascent. Every pull of cheese reaches further towards the void.</p>
+                    <div class="accent-line"></div>
+                </div>
+            </section>
+            
+            <section class="spacer"></section>
+            
+            <section class="content-section right-align reveal-on-scroll">
+                <h2 class="section-heading">TOWER OF<br><span class="highlight-text">CRAVINGS</span></h2>
+                <div class="section-body">
+                    <p>Layers of absolute indulgence stacked to the heavens.</p>
+                    <p>Gourmet elevation suspended in perfection.</p>
+                    <div class="accent-line right"></div>
+                </div>
+            </section>
+            
+            <section class="spacer"></section>
+            
+            <section class="content-section center-align reveal-on-scroll">
+                <h2 class="section-heading">CONSUME<br>EVERYTHING</h2>
+                <div class="section-body" style="margin: 0 auto;">
+                    <p>There is no exit. Only the craving.</p>
+                </div>
+            </section>
+            
+            <section class="spacer-small"></section>
+            
+            <footer class="site-footer reveal-on-scroll">
+                <div class="footer-left">
+                    <img src="assets/Gemini_Generated_Image_ux99b9ux99b9ux99.png" alt="Spicy Noodles" class="footer-noodles">
+                </div>
+                <div class="footer-right">
+                    <h2 class="footer-text">SPICY<br><span class="highlight-text">NOODLES</span></h2>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
